@@ -1,19 +1,75 @@
 import { useRef, useState } from "react";
-import Header from "./Header";
 import { validateLoginData } from "../utils/validate";
+import { B_IMAGE, LOGO_URL } from "../utils/constants";
+import {
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
+	updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
 	const [isSignIn, setIsSignIn] = useState(true);
+	const name = useRef(null);
 	const email = useRef(null);
 	const password = useRef(null);
 	const [errorMessage, setErrorMessage] = useState("");
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-	const HandleSignIn = () => {
+	const HandleButtonClick = () => {
 		const message = validateLoginData(
 			email.current.value,
 			password.current.value
 		);
 		setErrorMessage(message);
+		if (message) return;
+
+		if (!isSignIn) {
+			createUserWithEmailAndPassword(
+				auth,
+				email.current.value,
+				password.current.value
+			)
+				.then((userCredentials) => {
+					updateProfile(auth.currentUser, {
+						displayName: name.current.value,
+					})
+						.then(() => {
+							const { uid, displayName, email } = auth.currentUser;
+
+							dispatch(
+								addUser({
+									uid: uid,
+									displayName: displayName,
+									email: email,
+								})
+							);
+							navigate("/browse");
+						})
+						.catch((error) => {
+							setErrorMessage(error.message);
+						});
+				})
+				.catch((err) => {
+					setErrorMessage(err.message);
+				});
+		} else {
+			signInWithEmailAndPassword(
+				auth,
+				email.current.value,
+				password.current.value
+			)
+				.then((userCredentials) => {
+					navigate("/browse");
+				})
+				.catch((err) => {
+					setErrorMessage(err.message);
+				});
+		}
 	};
 
 	const ToggleLogin = () => {
@@ -23,12 +79,13 @@ const Login = () => {
 	return (
 		<div className="relative">
 			<div className="absolute -z-10 brightness-[45%]">
-				<img
-					src="https://assets.nflxext.com/ffe/siteui/vlv3/7968847f-3da9-44b3-8bbb-13a46579881f/web/IN-en-20250609-TRIFECTA-perspective_32b70b51-20d4-46db-8a1a-3d5428be5f0e_medium.jpg"
-					alt="Background Img"
-				/>
+				<img src={B_IMAGE} alt="Background Img" />
 			</div>
-			<Header />
+			<div className="px-10">
+				<div className="w-48 bg-gradient-to-b from-black">
+					<img src={LOGO_URL} alt="logo" />
+				</div>
+			</div>
 			<div className="flex justify-center m-2">
 				<form
 					onSubmit={(e) => e.preventDefault()}
@@ -41,6 +98,7 @@ const Login = () => {
 							className="my-2 p-3 border border-amber-50 rounded-md shadow-amber-50"
 							type="text"
 							placeholder="Full Name"
+							ref={name}
 						/>
 					)}
 					<input
@@ -60,17 +118,11 @@ const Login = () => {
 							{errorMessage}
 						</div>
 					)}
-					{isSignIn ? (
-						<button
-							className="my-2 py-2 rounded-md bg-red-600 font-bold cursor-pointer"
-							onClick={HandleSignIn}>
-							Sign In
-						</button>
-					) : (
-						<button className="my-2 py-2 rounded-md bg-red-600 font-bold cursor-pointer">
-							Sign Up
-						</button>
-					)}
+					<button
+						className="my-2 py-2 rounded-md bg-red-600 font-bold cursor-pointer"
+						onClick={HandleButtonClick}>
+						{isSignIn ? "Sign In" : "Sign Up"}
+					</button>
 					{isSignIn ? (
 						<p className="mt-5">
 							New to Netflix?{" "}
