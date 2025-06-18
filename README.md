@@ -7,6 +7,9 @@
 - validation using regex
 - Google firebase configuration
 - Deployment
+- Authentication using Firebase
+- Created userSlice using Redux Toolkit
+- Fetch movies from TMDB
 
 # Features
 
@@ -14,7 +17,9 @@
 
 - Browse(after authentication)
   - Header
-  - Main Movie in Background
-    - Movie Trailer playing
-    - Movie Details
-  - Movies of different categories
+  - Main Container
+    - Video Background
+    - Movie Title Card
+  - Secondary Container
+    - Movies category
+    - list of movies (cards)

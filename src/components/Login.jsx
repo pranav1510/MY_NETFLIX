@@ -10,6 +10,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import Header from "./Header";
 
 const Login = () => {
 	const [isSignIn, setIsSignIn] = useState(true);
@@ -48,7 +49,6 @@ const Login = () => {
 									email: email,
 								})
 							);
-							navigate("/browse");
 						})
 						.catch((error) => {
 							setErrorMessage(error.message);
@@ -64,7 +64,7 @@ const Login = () => {
 				password.current.value
 			)
 				.then((userCredentials) => {
-					navigate("/browse");
+					console.log(userCredentials.user);
 				})
 				.catch((err) => {
 					setErrorMessage(err.message);
@@ -81,12 +81,7 @@ const Login = () => {
 			<div className="absolute -z-10 brightness-[45%]">
 				<img src={B_IMAGE} alt="Background Img" />
 			</div>
-			<div className="px-10">
-				<div className="w-48 bg-gradient-to-b from-black">
-					<img src={LOGO_URL} alt="logo" />
-				</div>
-			</div>
-			<div className="flex justify-center m-2">
+			<div className="flex justify-center pt-36 mx-2">
 				<form
 					onSubmit={(e) => e.preventDefault()}
 					className="flex flex-col bg-black opacity-70 p-14 w-[30%] text-white rounded-md">
