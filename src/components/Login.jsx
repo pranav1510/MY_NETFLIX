@@ -63,9 +63,7 @@ const Login = () => {
 				email.current.value,
 				password.current.value
 			)
-				.then((userCredentials) => {
-					console.log(userCredentials.user);
-				})
+				.then((userCredentials) => {})
 				.catch((err) => {
 					setErrorMessage(err.message);
 				});
@@ -81,63 +79,65 @@ const Login = () => {
 			<div className="absolute -z-10 brightness-[45%]">
 				<img src={B_IMAGE} alt="Background Img" />
 			</div>
-			<div className="flex justify-center pt-36 mx-2">
-				<form
-					onSubmit={(e) => e.preventDefault()}
-					className="flex flex-col bg-black opacity-70 p-14 w-[30%] text-white rounded-md">
-					<h1 className="mb-5 font-bold text-3xl">
-						{isSignIn ? "Sign In" : "Sign Up"}
-					</h1>
-					{!isSignIn && (
+			<div className="flex flex-col h-screen justify-center">
+				<div className="flex justify-center mx-2">
+					<form
+						onSubmit={(e) => e.preventDefault()}
+						className="flex flex-col bg-black opacity-70 p-14 w-[30%] text-white rounded-md">
+						<h1 className="mb-5 font-bold text-3xl">
+							{isSignIn ? "Sign In" : "Sign Up"}
+						</h1>
+						{!isSignIn && (
+							<input
+								className="my-2 p-3 border border-amber-50 rounded-md shadow-amber-50"
+								type="text"
+								placeholder="Full Name"
+								ref={name}
+							/>
+						)}
 						<input
 							className="my-2 p-3 border border-amber-50 rounded-md shadow-amber-50"
 							type="text"
-							placeholder="Full Name"
-							ref={name}
+							placeholder="Email"
+							ref={email}
 						/>
-					)}
-					<input
-						className="my-2 p-3 border border-amber-50 rounded-md shadow-amber-50"
-						type="text"
-						placeholder="Email"
-						ref={email}
-					/>
-					<input
-						className="my-2 p-3 border border-amber-50 rounded-md shadow-amber-50 "
-						type="password"
-						placeholder="Password"
-						ref={password}
-					/>
-					{errorMessage && (
-						<div className="m-2 text-red-500 flex justify-center">
-							{errorMessage}
-						</div>
-					)}
-					<button
-						className="my-2 py-2 rounded-md bg-red-600 font-bold cursor-pointer"
-						onClick={HandleButtonClick}>
-						{isSignIn ? "Sign In" : "Sign Up"}
-					</button>
-					{isSignIn ? (
-						<p className="mt-5">
-							New to Netflix?{" "}
-							<span
-								onClick={ToggleLogin}
-								className="font-bold underline cursor-pointer">
-								Sign up now
-							</span>
-						</p>
-					) : (
-						<p className="mt-5">
-							Already Registered?{" "}
-							<span
-								onClick={ToggleLogin}
-								className="font-bold underline cursor-pointer">
-								Sign In
-							</span>
-						</p>
-					)}
-				</form>
+						<input
+							className="my-2 p-3 border border-amber-50 rounded-md shadow-amber-50 "
+							type="password"
+							placeholder="Password"
+							ref={password}
+						/>
+						{errorMessage && (
+							<div className="m-2 text-red-500 flex justify-center">
+								{errorMessage}
+							</div>
+						)}
+						<button
+							className="my-2 py-2 rounded-md bg-red-600 font-bold cursor-pointer"
+							onClick={HandleButtonClick}>
+							{isSignIn ? "Sign In" : "Sign Up"}
+						</button>
+						{isSignIn ? (
+							<p className="mt-5">
+								New to Netflix?{" "}
+								<span
+									onClick={ToggleLogin}
+									className="font-bold underline cursor-pointer">
+									Sign up now
+								</span>
+							</p>
+						) : (
+							<p className="mt-5">
+								Already Registered?{" "}
+								<span
+									onClick={ToggleLogin}
+									className="font-bold underline cursor-pointer">
+									Sign In
+								</span>
+							</p>
+						)}
+					</form>
+				</div>
 			</div>
 		</div>
 	);

@@ -1,6 +1,6 @@
 const BackgroundTitle = ({ title, overview }) => {
 	return (
-		<div className="w-auto px-12 absolute z-10 bottom-25">
+		<div className="w-auto px-12 absolute z-10 top-80">
 			<h1 className="text-4xl font-bold py-4 text-white">{title}</h1>
 			<p className="py-2 px-1 text-sm font-semibold w-2/5 text-white">
 				{overview}

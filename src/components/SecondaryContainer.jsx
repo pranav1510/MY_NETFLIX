@@ -1,5 +1,17 @@
+import { useSelector } from "react-redux";
+import MovieList from "./MovieList";
+
 const SecondaryContainer = () => {
-	return <div>Secondary Container</div>;
+	const allTrending = useSelector((store) => store.movies?.allTrending);
+	const popularMovies = useSelector((store) => store.movies?.popularMovies);
+	const popularTv = useSelector((store) => store.tv?.popularTv);
+	return (
+		<div className="-mt-50 relative z-30">
+			<MovieList title={"Trending"} movies={allTrending} />
+			<MovieList title={"Popular Movies"} movies={popularMovies} />
+			<MovieList title={"Popular TV"} movies={popularTv} />
+		</div>
+	);
 };
 
 export default SecondaryContainer;

@@ -6,6 +6,8 @@ import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/Login.jsx";
 import Browse from "./components/Browse.jsx";
+import Movies from "./components/Movies.jsx";
+import TvSeries from "./components/TvSeries.jsx";
 
 const appRouter = createBrowserRouter([
 	{
@@ -19,6 +21,14 @@ const appRouter = createBrowserRouter([
 			{
 				path: "/browse",
 				element: <Browse />,
+			},
+			{
+				path: "/movies",
+				element: <Movies />,
+			},
+			{
+				path: "/tv",
+				element: <TvSeries />,
 			},
 		],
 	},
