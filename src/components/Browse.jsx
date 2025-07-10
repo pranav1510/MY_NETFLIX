@@ -5,11 +5,11 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
-	useAllTrending();
 	usePopularMovies();
+	useAllTrending();
 	usePopularTv();
 	return (
-		<div className="bg-black overflow-hidden">
+		<div className="bg-black overflow-x-hidden relative">
 			<MainContainer />
 			<SecondaryContainer />
 		</div>

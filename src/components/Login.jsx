@@ -1,16 +1,14 @@
 import { useRef, useState } from "react";
 import { validateLoginData } from "../utils/validate";
-import { B_IMAGE, LOGO_URL } from "../utils/constants";
+import { B_IMAGE } from "../utils/constants";
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import Header from "./Header";
 
 const Login = () => {
 	const [isSignIn, setIsSignIn] = useState(true);
@@ -18,7 +16,6 @@ const Login = () => {
 	const email = useRef(null);
 	const password = useRef(null);
 	const [errorMessage, setErrorMessage] = useState("");
-	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const HandleButtonClick = () => {
@@ -76,11 +73,11 @@ const Login = () => {
 
 	return (
 		<div className="relative">
-			<div className="absolute -z-10 brightness-[45%]">
+			<div className="fixed -z-10 brightness-[45%]">
 				<img src={B_IMAGE} alt="Background Img" />
 			</div>
-			<div className="flex flex-col h-screen justify-center">
-				<div className="flex justify-center mx-2">
+			<div className="flex flex-col">
+				<div className="flex mx-2 justify-center relative top-40">
 					<form
 						onSubmit={(e) => e.preventDefault()}
 						className="flex flex-col bg-black opacity-70 p-14 w-[30%] text-white rounded-md">

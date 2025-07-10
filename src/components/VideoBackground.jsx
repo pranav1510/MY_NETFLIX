@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
-import useMainMovieTrailer from "../hooks/usemainMovieTrailer";
+import useMainMovieTrailer from "../hooks/useMainMovieTrailer";
 
 const VideoBackground = ({ movieId }) => {
-	const mainMovieTrailer = useSelector(
-		(state) => state.movies?.mainMovieTrailer
-	);
-
 	useMainMovieTrailer(movieId);
+
+	const mainMovieTrailer = useSelector(
+		(store) => store.movies?.mainMovieTrailer
+	);
 
 	return (
 		mainMovieTrailer && (
@@ -15,7 +15,7 @@ const VideoBackground = ({ movieId }) => {
 					className="w-screen aspect-video"
 					src={
 						"https://www.youtube.com/embed/" +
-						mainMovieTrailer?.key +
+						mainMovieTrailer.key +
 						"?autoplay=1&loop=1&mute=1&rel=0&showinfo=0&modestbranding=1"
 					}
 					title="YouTube video player"

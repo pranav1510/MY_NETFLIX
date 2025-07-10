@@ -3,14 +3,14 @@ import BackgroundTitle from "./BackgroundTitle";
 import VideoBackground from "./VideoBackground";
 
 const MainContainer = () => {
-	const movies = useSelector((store) => store.movies?.allTrending);
-	if (!movies) return;
-
-	const { original_title, overview, id } = movies[0];
+	const title = "Final Destination Bloodlines";
+	const overview =
+		"Plagued by a violent recurring nightmare, college student Stefanie heads home to track down the one person who might be able to break the cycle and save her family from the grisly demise that inevitably awaits them all.";
+	const id = 574475;
 
 	return (
 		<div className="w-full">
-			<BackgroundTitle title={original_title} overview={overview} />
+			<BackgroundTitle title={title} overview={overview} />
 			<VideoBackground movieId={id} />
 		</div>
 	);

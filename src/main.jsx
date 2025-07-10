@@ -8,6 +8,7 @@ import Login from "./components/Login.jsx";
 import Browse from "./components/Browse.jsx";
 import Movies from "./components/Movies.jsx";
 import TvSeries from "./components/TvSeries.jsx";
+import GeminiPage from "./components/GeminiPage.jsx";
 
 const appRouter = createBrowserRouter([
 	{
@@ -29,6 +30,10 @@ const appRouter = createBrowserRouter([
 			{
 				path: "/tv",
 				element: <TvSeries />,
+			},
+			{
+				path: "/search",
+				element: <GeminiPage />,
 			},
 		],
 	},

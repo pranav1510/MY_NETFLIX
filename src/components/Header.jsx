@@ -1,16 +1,15 @@
 import { LOGO_URL, PROFILE_URL } from "../utils/constants";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
 
 const Header = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const theUser = useSelector((store) => store.user);
-	const [highlight, setHighlight] = useState("Home");
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -38,17 +37,8 @@ const Header = () => {
 		});
 	};
 
-	const handleHome = () => {
-		setHighlight("Home");
-		navigate("/browse");
-	};
-	const handleMovies = () => {
-		setHighlight("Movies");
-		navigate("/movies");
-	};
-	const handleTv = () => {
-		setHighlight("Tv");
-		navigate("/tv");
+	const handleGemini = () => {
+		navigate("/search");
 	};
 
 	return (
@@ -80,6 +70,11 @@ const Header = () => {
 						</ul>
 					</div>
 					<div className="flex">
+						<button
+							className="m-3 px-3 bg-blue-700 text-white font-bold rounded-md text-sm cursor-pointer"
+							onClick={handleGemini}>
+							Gemini AI
+						</button>
 						<div className="flex px-2 self-center h-8 rounded-md">
 							<img src={PROFILE_URL} alt="profile" />
 						</div>
