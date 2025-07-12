@@ -12,7 +12,7 @@ const TvSeries = () => {
 
 	return (
 		<div className="bg-black w-full  text-white">
-			<div className="pt-20">
+			<div className="pt-40 md:pt-20">
 				<MovieList title={"Now Playing"} movies={nowPlaying} />
 				<MovieList title={"Popular Tv"} movies={popularTv} />
 				<MovieList title={"Top Rated Tv"} movies={topRatedTv} />

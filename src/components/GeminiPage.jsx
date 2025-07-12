@@ -4,8 +4,12 @@ import GeminiSearch from "./GeminiSearch";
 const GeminiPage = () => {
 	return (
 		<div>
-			<div className="fixed -z-10 brightness-[40%] h-[100%]">
-				<img src={B_IMAGE} className="object-none" alt="Background Img" />
+			<div className="fixed -z-10 brightness-[40%] w-screen h-screen overflow-hidden">
+				<img
+					src={B_IMAGE}
+					className="w-full h-full object-cover object-center"
+					alt="Background Img"
+				/>
 			</div>
 			<GeminiSearch />
 		</div>

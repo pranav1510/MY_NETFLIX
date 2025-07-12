@@ -73,14 +73,18 @@ const Login = () => {
 
 	return (
 		<div className="relative">
-			<div className="fixed -z-10 brightness-[45%]">
-				<img src={B_IMAGE} alt="Background Img" />
+			<div className="fixed -z-10 brightness-[45%] w-screen h-screen overflow-hidden">
+				<img
+					src={B_IMAGE}
+					className="w-full h-full object-cover object-center"
+					alt="Background Img"
+				/>
 			</div>
 			<div className="flex flex-col">
-				<div className="flex mx-2 justify-center relative top-40">
+				<div className="flex justify-center relative top-40">
 					<form
 						onSubmit={(e) => e.preventDefault()}
-						className="flex flex-col bg-black opacity-70 p-14 w-[30%] text-white rounded-md">
+						className="flex flex-col bg-black opacity-70 text-white rounded-md md:w-[30%] p-14">
 						<h1 className="mb-5 font-bold text-3xl">
 							{isSignIn ? "Sign In" : "Sign Up"}
 						</h1>

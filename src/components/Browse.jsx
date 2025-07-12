@@ -9,7 +9,7 @@ const Browse = () => {
 	useAllTrending();
 	usePopularTv();
 	return (
-		<div className="bg-black overflow-x-hidden relative">
+		<div className="bg-black relative md:overflow-x-hidden">
 			<MainContainer />
 			<SecondaryContainer />
 		</div>

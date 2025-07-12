@@ -19,7 +19,6 @@ const usePopularMovies = () => {
 		const json = await data.json();
 
 		dispatch(addPopularMovies(json.results));
-		dispatch(addMainMovieTrailer(json.results[0]));
 	};
 };
 

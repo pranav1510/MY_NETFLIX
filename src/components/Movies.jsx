@@ -11,8 +11,8 @@ const Movies = () => {
 	const upcomingMovies = useSelector((store) => store.movies?.upcomingMovies);
 
 	return (
-		<div className="bg-black w-full  text-white">
-			<div className="pt-20">
+		<div className="bg-black w-full text-white">
+			<div className="pt-40 md:pt-20">
 				<MovieList title={"Popular Movies"} movies={popularMovies} />
 				<MovieList title={"Top Rated Movies"} movies={topRatedMovies} />
 				<MovieList title={"Upcoming Movies "} movies={upcomingMovies} />

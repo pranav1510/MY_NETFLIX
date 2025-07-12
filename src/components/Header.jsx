@@ -42,7 +42,7 @@ const Header = () => {
 	};
 
 	return (
-		<div className="flex w-screen fixed z-50 justify-between px-10 bg-gradient-to-b from-black">
+		<div className="flex flex-col md:flex-row w-screen fixed z-50 justify-between px-10 bg-gradient-to-b from-black">
 			<div className="w-36">
 				<img src={LOGO_URL} alt="logo" />
 			</div>
@@ -71,7 +71,7 @@ const Header = () => {
 					</div>
 					<div className="flex">
 						<button
-							className="m-3 px-3 bg-blue-700 text-white font-bold rounded-md text-sm cursor-pointer"
+							className=" bg-blue-700 text-white font-bold rounded-md m-3 p-2 md:m-3 px-3 text-sm cursor-pointer"
 							onClick={handleGemini}>
 							Gemini AI
 						</button>

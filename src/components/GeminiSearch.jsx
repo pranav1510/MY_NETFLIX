@@ -44,13 +44,13 @@ const GeminiSearch = () => {
 	};
 
 	return (
-		<div className="py-[15%]">
+		<div className="py-[50%] md:py-[18%]">
 			<form
-				className="flex justify-center p-9"
+				className="flex justify-center p-2 md:p-12"
 				onSubmit={(e) => e.preventDefault()}>
 				<input
 					ref={searchText}
-					className="w-7/12 px-4 py-2 bg-white rounded-md"
+					className="w-[80%] px-2 py-1 text-sm bg-white rounded-md md:w-7/12"
 					type="text"
 					placeholder="What would you like to watch today ?"
 					onChange={(e) => {
@@ -60,7 +60,7 @@ const GeminiSearch = () => {
 					}}
 				/>
 				<button
-					className="w-1/12 mx-4 px-5 py-2 bg-red-700 text-white font-bold rounded-md text-sm cursor-pointer"
+					className="mx-1 px-3 py-2 bg-red-700 text-white font-bold rounded-md text-sm cursor-pointer md: "
 					onClick={handleSearch}>
 					Search
 				</button>
