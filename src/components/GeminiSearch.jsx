@@ -32,7 +32,7 @@ const GeminiSearch = () => {
 			model: "gemini-2.5-flash",
 			contents: geminiQuery,
 		});
-		console.log(geminiResults?.candidates[0]?.content?.parts[0]?.text);
+		// console.log(geminiResults?.candidates[0]?.content?.parts[0]?.text);
 
 		const geminiMovies =
 			geminiResults?.candidates[0]?.content?.parts[0]?.text.split(",");
